@@ -27,7 +27,7 @@ class QuestionClient:
         - Only one answer is correct.
         - correct_answer must be the INDEX of the correct answer (0-3).
         - Do not make the answer obvious.
-        - Make the question level {self.level_diff} out of 50
+        - Make the question level {self.level_diff} out of 30
         - Make the text short as possible
         """,
         config=types.GenerateContentConfig(
