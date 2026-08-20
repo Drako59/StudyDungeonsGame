@@ -47,7 +47,8 @@ class Enemy:
         model: QuestionModel = self.client.FetchQuestion(self.subject.name)
 
         self.load_answers(model.answers, model.answers[model.correct_answer])
-        self.load_question(model.question)
+        self.load_question(model.question)  
+        self.client.AddQuestionMemory(model.question)
 
     def show(self) -> None:
         self.screen.blit(self.enemyImage, (self.__x, self.__y))
@@ -74,9 +75,9 @@ class Enemy:
         block_size = [x // 100 for x in screen_size]
         
         question_backgroun = pygame.image.load(ANSWER_BACKGROUND).convert_alpha()
-        pos = (block_size[0] * 35,block_size[1] * 10)
+        pos = (block_size[0] * 21,block_size[1] * 10)
             
-        self.__question = TextBlock(question_backgroun,question, pos,(block_size[0] * 30, block_size[1] * 30),self.screen)
+        self.__question = TextBlock(question_backgroun,question, pos,(block_size[0] * 60, block_size[1] * 30),self.screen)
 
 
     def ShowDialogQuestion(self) -> bool:
