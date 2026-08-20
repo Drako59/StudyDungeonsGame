@@ -1,2 +1,2 @@
-# StudyDUngeonsGame
-A game built in pygame for hackathon in order to learn. Fetch question created by AI
+DOCS
+https://docs.google.com/document/d/1wJJ-HzqEpSRXOoa4uDyDPySWJnkGcCYZGA5USY79zf0/edit?usp=sharing
