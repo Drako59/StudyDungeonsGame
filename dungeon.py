@@ -1,3 +1,4 @@
+import asyncio
 import pygame
 from player import Player
 from enemy import Enemy
@@ -5,7 +6,6 @@ from consts import *
 from DVD_player import *
 from dungeon_enum import Subject
 import random as rnd
-import time
 from AiQuestionFetcher import QuestionClient, QuestionModel
 from env import API_KEY
 
@@ -208,12 +208,12 @@ class Dungeon:
         return False
 
     #החץ מראה איזה סוג הפונקציה - הפונקציה תחזיר ערך בוליאני
-    def counter_enemy(self,maze,pos: tuple[int]) -> bool:
+    async def counter_enemy(self,maze,pos: tuple[int]) -> bool:
         #אם המיקום של השחקן שווה למיקום שבו נמצא האויב והמקום לא ריק
         #אז מציג את השאלון על המסך
         if  maze[pos[1]][pos[0]] == 4 and self.enemysMatrix[pos[1]][pos[0]] != None:
             enemy: Enemy =  self.enemysMatrix[pos[1]][pos[0]]
-            status = enemy.ShowDialogQuestion()
+            status = await enemy.ShowDialogQuestion()
             if status == True:
                 self.enemysMatrix[pos[1]][pos[0]] = None
             return status
@@ -221,7 +221,7 @@ class Dungeon:
         #אותו דבר רק עם הבוס
         elif maze[pos[1]][pos[0]] == 5 and self.enemysMatrix[pos[1]][pos[0]] != None:
             enemy : Enemy = self.enemysMatrix[pos[1]][pos[0]]
-            status = enemy.ShowDialogQuestion()
+            status = await enemy.ShowDialogQuestion()
             if status == True:
                 self.enemysMatrix[pos[1]][pos[0]] = None
             return status
@@ -234,7 +234,7 @@ class Dungeon:
 
         return False
 
-    def start(self):
+    async def start(self):
         maze: list[list[int]]
         match self.currentLevel:
             case 1:
@@ -246,7 +246,7 @@ class Dungeon:
             case 4:
                 maze = self.__maze4
             case _:
-                self.show_won_screen()
+                await self.show_won_screen()
                 return
         self.player.down()
         playerCords = self.player.getIndexCords() # (ix , iy)
@@ -286,35 +286,37 @@ class Dungeon:
                 playerCords = self.player.getIndexCords()
                 moved = True
 
-            if not self.counter_enemy(maze,playerCords):
+            if not await self.counter_enemy(maze,playerCords):
                 pygame.event.clear()
                 while pygame.mouse.get_pressed()[0]:
                     pygame.event.pump()
                     self.clock.tick(60)
-                self.show_lost_screen()
+                    await asyncio.sleep(0)
+                await self.show_lost_screen()
                 return
 
             if self.check_pass_level(maze,playerCords):
                 self.currentLevel += 1
                 self.player.move(0,0)
                 pygame.display.flip()
-                return self.start()
+                return await self.start()
 
             self.screen.blit(self.backImage, (0,1))
             self.show_maze(maze)
             self.player.show()
-            pygame.display.flip()   
+            pygame.display.flip()
             self.clock.tick(8)
+            await asyncio.sleep(0)
 
 
     #לא מחזיר ערך
-    def  show_lost_screen(self) -> None:
+    async def  show_lost_screen(self) -> None:
         self.screen.blit(self.lostImage, (0,0))
         pygame.display.flip()
-        time.sleep(2)
+        await asyncio.sleep(2)
 
     # לא מחזיר ערך
-    def  show_won_screen(self) -> None:
+    async def  show_won_screen(self) -> None:
         self.screen.blit(self.wonImage, (0,0))
         pygame.display.flip()
-        time.sleep(2)
+        await asyncio.sleep(2)

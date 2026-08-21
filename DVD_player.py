@@ -1,9 +1,11 @@
 import os
 
 # pip install -U google-genai
-from google import genai
+# genai/gtts are unavailable under pygbag and the code using them is commented
+# out below - keep these imports off until the DvdPlayer class is revived.
+# from google import genai
 import pygame
-from gtts import gTTS
+# from gtts import gTTS
 from consts import *
 # client = genai.Client()
 

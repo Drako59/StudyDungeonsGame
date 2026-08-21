@@ -1,3 +1,4 @@
+import asyncio
 import pygame
 from answer import Answer
 from textBlock import TextBlock
@@ -45,8 +46,8 @@ class Enemy:
             self.client = client
 
 
-    def FetchQuestion(self):
-        model: QuestionModel = self.client.FetchQuestion(self.subject.name)
+    async def FetchQuestion(self):
+        model: QuestionModel = await self.client.FetchQuestion(self.subject.name)
 
         self.load_answers(model.answers, model.answers[model.correct_answer])
         self.load_question(model.question)  
@@ -82,8 +83,8 @@ class Enemy:
         self.__question = TextBlock(question_backgroun,question, pos,(block_size[0] * 60, block_size[1] * 30),self.screen)
 
 
-    def ShowDialogQuestion(self) -> bool:
-        self.FetchQuestion()
+    async def ShowDialogQuestion(self) -> bool:
+        await self.FetchQuestion()
         while True:
             self.screen.blit(self.windowBackground, (0,0))
             self.__question.show()
@@ -107,4 +108,5 @@ class Enemy:
             
             self.clock.tick(400)
             pygame.display.flip()
+            await asyncio.sleep(0)
          

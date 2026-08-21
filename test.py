@@ -1,16 +1,18 @@
+import asyncio
+
 from AiQuestionFetcher import QuestionModel,QuestionClient
 
 from env import API_KEY
 
 
 
-def main():
+async def main():
 
     client: QuestionClient = QuestionClient(API_KEY=API_KEY)
 
-    model: QuestionModel = client.FetchQuestion("History")
+    model: QuestionModel = await client.FetchQuestion("History")
 
     print(model)
 
 if __name__ == '__main__':
-    main()
+    asyncio.run(main())

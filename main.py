@@ -1,3 +1,4 @@
+import asyncio
 import button
 from consts import *
 from menu_main import *
@@ -56,11 +57,11 @@ def choose_dugneon_screen() -> None:
     math_dungeon_button.draw(screen)
     science_dungeon_button.draw(screen)
 
-def main() -> None:
+async def main() -> None:
     status = 0
     run = True
 
-    story_screen.create_welcome_screen()
+    await story_screen.create_welcome_screen()
 
     while run:
         screen.blit(background_image, (0, 0))
@@ -77,29 +78,30 @@ def main() -> None:
                 dungeon = Dungeon(english_dungeon_background,start_block_image_load,end_block_image_load,block_image_load, Subject.English, screen,clock)
                 screen.blit(background_image, (0,0))
 
-                dungeon.start()
+                await dungeon.start()
 
             if history_dungeon_button.check_click():
 
                 screen.blit(background_image, (0,0))
                 dungeon = Dungeon(history_dungeon_background,start_block_image_load,end_block_image_load,block_image_load, Subject.History, screen,clock)
-                dungeon.start()
+                await dungeon.start()
 
             if  math_dungeon_button.check_click():
                 screen.blit(background_image, (0,0))
                 dungeon = Dungeon(math_dungeon_background,start_block_image_load,end_block_image_load,block_image_load, Subject.Math, screen,clock)
-                dungeon.start()
+                await dungeon.start()
 
             if science_dungeon_button.check_click():
                 screen.blit(background_image, (0,0))
                 dungeon = Dungeon(science_dungeon_background,start_block_image_load,end_block_image_load,block_image_load, Subject.Science, screen,clock)
-                dungeon.start()
-            
+                await dungeon.start()
+
         pygame.display.flip()
         clock.tick(400)
+        await asyncio.sleep(0)
 
     pygame.quit()
 
 
 if __name__ == '__main__':
-    main()
+    asyncio.run(main())
