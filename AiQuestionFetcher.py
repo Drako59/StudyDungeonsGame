@@ -54,11 +54,10 @@ class QuestionClient:
             self.level_diff += 1
             return question
 
-        except:
-            question: QuestionModel = QuestionModel()
-            question.question = "What is your name?"
-            question.answers  = ["Ofri", "Talya", "Itamar", "Eliran"]
-            question.correct_answer = 0
+        except Exception as e:
+            print(str(e))
+            question: QuestionModel = QuestionModel(question="What is your name?", answers=["Ofri", "Talya", "Itamar", "Eliran"], correct_answer=0)
+            
             return  question
 
     
