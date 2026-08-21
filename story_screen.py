@@ -1,3 +1,4 @@
+import asyncio
 import sys
 import pygame
 import consts
@@ -21,7 +22,7 @@ button_rect.topleft = button_pos
 continue_button = button.Button(button_pos[0], button_pos[1], button_img, 2)
 
 
-def create_welcome_screen():
+async def create_welcome_screen():
     global background
     background = pygame.transform.scale(background, (screen.get_width(), screen.get_height()))
     screen.blit(background, (0, 0))
@@ -38,6 +39,7 @@ def create_welcome_screen():
                 if continue_button.check_click():
                     return
         pygame.display.update()
+        await asyncio.sleep(0)
 
 def print_text():
     font = pygame.font.Font(consts.FONT, 30)

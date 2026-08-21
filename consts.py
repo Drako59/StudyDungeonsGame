@@ -1,25 +1,25 @@
-BACKGROUND_STORY = "images/dungeons/background.jpg"
-FONT = "images/fontt.otf"
-CONTINUE_BUTTON = "images/continue_button.png"
+BACKGROUND_STORY = "Images/dungeons/background.jpg"
+FONT = "Images/fontt.otf"
+CONTINUE_BUTTON = "Images/continue_button.png"
 
 
-SCIENCE_BACKGROUND = "images/dungeons/ScienceBack.png"
-HISTORY_BACKGROUND = "images/dungeons/HistoryBack.png"
-ENGLISH_BACKGROUND = "images/dungeons/EnglishBack.png"
-MATH_BACKGROUND = "images/dungeons/MathBack.png"
-LOST_IMAGE = "images/dungeons/Lost.png"
-WON_IMAGE = "images/dungeons/Won.png"
+SCIENCE_BACKGROUND = "Images/dungeons/ScienceBack.png"
+HISTORY_BACKGROUND = "Images/dungeons/HistoryBack.png"
+ENGLISH_BACKGROUND = "Images/dungeons/EnglishBack.png"
+MATH_BACKGROUND = "Images/dungeons/MathBack.png"
+LOST_IMAGE = "Images/dungeons/Lost.png"
+WON_IMAGE = "Images/dungeons/Won.png"
 
-BLOCK_IMAGE = "images/dungeons/DungeonBlock.png"
-START_BLOCK_IMAGE = "images/dungeons/start_door.png"
-END_BLOCK_IMAGE = "images/dungeons/end_door.png"
-PLAYER_IMAGE = "images/dungeons/player.png"
+BLOCK_IMAGE = "Images/dungeons/DungeonBlock.png"
+START_BLOCK_IMAGE = "Images/dungeons/start_door.png"
+END_BLOCK_IMAGE = "Images/dungeons/end_door.png"
+PLAYER_IMAGE = "Images/dungeons/player.png"
 
-DVD_IMG = "images/dungeons/dvd_disk.png"
-ENEMY_IMAGE = "images/enemys/monster1.png"
-BOSS_IMAGE = "images/enemys/monster2.png"
-ENEMY_BACKGROUND = "images/enemys/EnemyBackground.png"
-ANSWER_BACKGROUND = "images/enemys/AnswerBackground.png"
+DVD_IMG = "Images/dungeons/dvd_disk.png"
+ENEMY_IMAGE = "Images/enemys/monster1.png"
+BOSS_IMAGE = "Images/enemys/monster2.png"
+ENEMY_BACKGROUND = "Images/enemys/EnemyBackground.png"
+ANSWER_BACKGROUND = "Images/enemys/AnswerBackground.png"
 
 
 STORY = """             Global IQ has dropped because of A.I...
