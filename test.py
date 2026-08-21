@@ -4,8 +4,13 @@ from env import API_KEY
 
 
 
-client: QuestionClient = QuestionClient(API_KEY=API_KEY)
+def main():
 
-model: QuestionModel = client.FetchQuestion("History")
+    client: QuestionClient = QuestionClient(API_KEY=API_KEY)
 
-print(model)
+    model: QuestionModel = client.FetchQuestion("History")
+
+    print(model)
+
+if __name__ == '__main__':
+    main()

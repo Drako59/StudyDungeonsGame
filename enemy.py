@@ -24,8 +24,10 @@ class Enemy:
             self.__answers = []
             self.__enemySizes = enemySizes
             self.enemyImage = pygame.transform.scale(enemyImage, self.__enemySizes)
+
             # self.__iy = iy
             # self.__ix = ix
+
             self.__x = x
             self.__y = y
 
